@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | somnus</title>
+  <title>headless chrome小试牛刀 | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="somnus">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="前言headless chrome 相对于phantomjs 功能实在是太丰富的，phantomjs还是1800+个bug还没修复，前几天给phantomjs添加输出网站ssl证书api真心心累，以后就不用phantomjs了，随着headless的成熟，chrome替代phantomjs指日可待！ 1.安装chrome-remote-interface1npm install chrome-re">
+<meta name="keywords" content="笔记,headless chrome,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="headless chrome小试牛刀">
+<meta property="og:url" content="http://yoursite.com/2017/08/11/headless-chrome小试牛刀/index.html">
 <meta property="og:site_name" content="somnus">
+<meta property="og:description" content="前言headless chrome 相对于phantomjs 功能实在是太丰富的，phantomjs还是1800+个bug还没修复，前几天给phantomjs添加输出网站ssl证书api真心心累，以后就不用phantomjs了，随着headless的成熟，chrome替代phantomjs指日可待！ 1.安装chrome-remote-interface1npm install chrome-re">
+<meta property="og:updated_time" content="2017-09-02T05:39:56.960Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="somnus">
+<meta name="twitter:title" content="headless chrome小试牛刀">
+<meta name="twitter:description" content="前言headless chrome 相对于phantomjs 功能实在是太丰富的，phantomjs还是1800+个bug还没修复，前几天给phantomjs添加输出网站ssl证书api真心心累，以后就不用phantomjs了，随着headless的成熟，chrome替代phantomjs指日可待！ 1.安装chrome-remote-interface1npm install chrome-re">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -153,78 +158,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-headless-chrome小试牛刀" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/12/Go-搭建匿名检测api/" class="archive-article-date">
-  	<time datetime="2017-08-12T03:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/12/Go-搭建匿名检测api/">Go 搭建匿名检测api</a>
+    <h1 class="article-title" itemprop="name">
+      headless chrome小试牛刀
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/headless-chrome小试牛刀/" class="archive-article-date">
+        
+        <a href="/2017/08/11/headless-chrome小试牛刀/" class="archive-article-date">
   	<time datetime="2017-08-11T05:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/headless-chrome小试牛刀/">headless chrome小试牛刀</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>headless chrome 相对于phantomjs 功能实在是太丰富的，phantomjs还是1800+个bug还没修复，前几天给phantomjs添加输出网站ssl证书api真心心累，以后就不用phantomjs了，随着headless的成熟，chrome替代phantomjs指日可待！</p>
+<h5 id="1-安装chrome-remote-interface"><a href="#1-安装chrome-remote-interface" class="headerlink" title="1.安装chrome-remote-interface"></a>1.安装chrome-remote-interface</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install chrome-remote-interface</div></pre></td></tr></table></figure>
+<h5 id="2-安装chrome-launcher"><a href="#2-安装chrome-launcher" class="headerlink" title="2.安装chrome-launcher"></a>2.安装chrome-launcher</h5><p>先要安装yarn<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install -g yarn</div><div class="line">yarn add chrome-launcher</div></pre></td></tr></table></figure></p>
+<h5 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">const CDP = require(<span class="string">'chrome-remote-interface'</span>);</div><div class="line">const chromeLauncher = require(<span class="string">'chrome-launcher'</span>);</div><div class="line">const fs = require(<span class="string">'fs'</span>);</div><div class="line">var resources = [];</div><div class="line"></div><div class="line"><span class="keyword">function</span> crawl(chrome)&#123;</div><div class="line">    const options = &#123;</div><div class="line">        host: <span class="string">'localhost'</span>,</div><div class="line">        port: chrome.port</div><div class="line">    &#125;;</div><div class="line">    CDP(options,async(client) =&gt; &#123;</div><div class="line">        const &#123;Page, Runtime, Network&#125; = client;</div><div class="line">        try &#123;</div><div class="line">            Network.responseReceived((params) =&gt; &#123;</div><div class="line">                resources.push(params.response);</div><div class="line">            &#125;);</div><div class="line">            await Network.setCacheDisabled(&#123;cacheDisabled: <span class="literal">true</span>&#125;);</div><div class="line">            await Network.setUserAgentOverride(&#123; userAgent: <span class="string">"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36"</span> &#125;);//设置UserAgent</div><div class="line">            await Network.setExtraHTTPHeaders(&#123;headers : &#123;<span class="string">"Connection"</span> : <span class="string">"keep-alive"</span>,<span class="string">"Cache-Control"</span> : <span class="string">"max-age=0"</span>,<span class="string">"Accept"</span>: <span class="string">"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"</span>,<span class="string">"Accept-Encoding"</span>: <span class="string">"gzip, deflate"</span>,<span class="string">"Accept-Language"</span>: <span class="string">"en;q=0.6"</span>&#125;&#125;);//设置请求的header</div><div class="line">            await Network.enable();</div><div class="line">            await Page.enable();</div><div class="line">            await Page.navigate(&#123;url: <span class="string">'https://www.52pojie.cn/'</span>&#125;);</div><div class="line">            await Page.loadEventFired(async () =&gt; &#123;</div><div class="line">                const weight = await Runtime.evaluate(&#123;expression:<span class="string">'document.documentElement.scrollWidth'</span>&#125;);//获取网页宽</div><div class="line">                const height = await Runtime.evaluate(&#123;expression:<span class="string">'document.documentElement.scrollHeight'</span>&#125;);//获取网页高</div><div class="line">                const result = await Runtime.evaluate(&#123;</div><div class="line">                    expression: <span class="string">'document.documentElement.outerHTML'</span></div><div class="line">                &#125;);</div><div class="line">                const content = result.result.value;</div><div class="line">                const rurl = await Runtime.evaluate(&#123;expression:<span class="string">'location.href'</span>&#125;);//请求的URL</div><div class="line">                const rsurl = rurl.result.value;</div><div class="line">                const &#123;data&#125; = await Page.printToPDF(&#123;</div><div class="line">                    landscape: <span class="literal">true</span>,</div><div class="line">                    printBackground: <span class="literal">true</span>,</div><div class="line">                    paperWidth: height.result.value/28.3/2.54,//headless chrome 和 phantomjs 单位有些不同要换算成英寸</div><div class="line">                    paperHeight: weight.result.value/28.3/2.54,</div><div class="line">                    marginTop: 0,</div><div class="line">                    marginBottom: 0,</div><div class="line">                    marginLeft: 0,</div><div class="line">                    marginRight: 0</div><div class="line">                &#125;);</div><div class="line">                console.log(rsurl);//打印网页url</div><div class="line">                <span class="keyword">for</span> (var i = 0,len = resources.length; i &lt; len; i++)&#123;</div><div class="line">                    var response = resources[i];</div><div class="line">                    <span class="keyword">if</span> (response.url == rsurl)&#123;</div><div class="line">                        headers = JSON.stringify(response);</div><div class="line">                        console.log(headers);//打印网页response</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                fs.writeFileSync(<span class="string">'page.pdf'</span>, Buffer.from(data, <span class="string">'base64'</span>));//保存pdf</div><div class="line">                fs.writeFileSync(<span class="string">'page.html'</span>,content);//保存html页面</div><div class="line">                client.close();</div><div class="line">                chrome.kill(); // Kill Chrome.</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">        &#125; catch (err) &#123;</div><div class="line">            chrome.kill();</div><div class="line">            console.error(err);</div><div class="line">        &#125;</div><div class="line">    &#125;).on(<span class="string">'error'</span>, (err) =&gt; &#123;</div><div class="line">        chrome.kill();</div><div class="line">        console.error(err);</div><div class="line">    &#125;);</div><div class="line">    &#125;;</div><div class="line">    </div><div class="line"><span class="keyword">function</span> launchChrome(headless=<span class="literal">true</span>) &#123;</div><div class="line">  <span class="built_in">return</span> chromeLauncher.launch(&#123;</div><div class="line">    //port: 9222, //可以指定chrome端口</div><div class="line">    chromeFlags: [</div><div class="line">      <span class="string">'--window-size=412,732'</span>,</div><div class="line">      <span class="string">'--disable-gpu'</span>,</div><div class="line">      headless ? <span class="string">'--headless'</span> : <span class="string">''</span></div><div class="line">    ]</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">    </div><div class="line">launchChrome().<span class="keyword">then</span>(chrome =&gt; &#123;</div><div class="line">    console.log(`Chrome debuggable on port: <span class="variable">$&#123;chrome.port&#125;</span>`);//打印chrome端口</div><div class="line">    crawl(chrome);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -244,61 +239,113 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/11/headless-chrome小试牛刀/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/10/phantomjs/" class="archive-article-date">
-  	<time datetime="2017-08-10T02:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-10</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2017/08/12/Go-搭建匿名检测api/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Go 搭建匿名检测api
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/10/phantomjs/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">phantomjs 抓取网页</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/10/phantomjs/">phantomjs 抓取网页</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">phantomjs</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -321,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
