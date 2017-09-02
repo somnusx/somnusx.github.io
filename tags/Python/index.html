@@ -6,19 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Go 搭建匿名检测api | somnus</title>
+  <title>Tag: Python | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
-<meta name="keywords" content="Go,笔记">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Go 搭建匿名检测api">
-<meta property="og:url" content="http://yoursite.com/2017/08/12/Go-搭建匿名检测api/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="somnus">
+<meta property="og:url" content="http://yoursite.com/tags/Python/index.html">
 <meta property="og:site_name" content="somnus">
-<meta property="og:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
-<meta property="og:updated_time" content="2017-09-02T05:40:13.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go 搭建匿名检测api">
-<meta name="twitter:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
+<meta name="twitter:title" content="somnus">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -158,179 +153,110 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Go-搭建匿名检测api" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Go 搭建匿名检测api
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/08/02/Elseticsearch分页查询和精确查询/" class="archive-article-date">
+  	<time datetime="2017-08-02T11:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/08/02/Elseticsearch分页查询和精确查询/">Elseticsearch分页查询和精确查询</a>
     </h1>
   
 
-        
-        <a href="/2017/08/12/Go-搭建匿名检测api/" class="archive-article-date">
-  	<time datetime="2017-08-12T03:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>使用go语言搭建匿名检测的api<br>程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"strings"</span></div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"encoding/json"</span></div><div class="line">)</div><div class="line">func Header(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    head := r.Header</div><div class="line">    headers, _ := json.Marshal(head)</div><div class="line">    w.Write(headers)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func Ip(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    a := r.RemoteAddr</div><div class="line">    ip := strings.Split(a,<span class="string">":"</span>)[0]</div><div class="line">    w.Write([]byte(ip))</div><div class="line">&#125;</div><div class="line"> </div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    http.HandleFunc(<span class="string">"/ip"</span>, Ip)</div><div class="line">    http.HandleFunc(<span class="string">"/header"</span>, Header)</div><div class="line">    http.ListenAndServe(<span class="string">":3000"</span>, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/12/Go-搭建匿名检测api/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-  
-    <a href="/2017/08/11/headless-chrome小试牛刀/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">headless chrome小试牛刀</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/08/02/Python连接Elasticsearch超时问题/" class="archive-article-date">
+  	<time datetime="2017-08-02T06:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/08/02/Python连接Elasticsearch超时问题/">Python连接Elasticsearch超时问题</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
-  
+    
 
 
           </div>
@@ -353,9 +279,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

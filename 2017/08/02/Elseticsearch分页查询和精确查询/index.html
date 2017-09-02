@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Go 搭建匿名检测api | somnus</title>
+  <title>Elseticsearch分页查询和精确查询 | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
-<meta name="keywords" content="Go,笔记">
+  <meta name="description" content="前言Elseticsearch分页查询和精确查询 for python 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#coding:utf-8from elasticsearch import Elasticsearches = Elasticsearch([&amp;#123;&apos;ho">
+<meta name="keywords" content="Elasticsearch,Python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go 搭建匿名检测api">
-<meta property="og:url" content="http://yoursite.com/2017/08/12/Go-搭建匿名检测api/index.html">
+<meta property="og:title" content="Elseticsearch分页查询和精确查询">
+<meta property="og:url" content="http://yoursite.com/2017/08/02/Elseticsearch分页查询和精确查询/index.html">
 <meta property="og:site_name" content="somnus">
-<meta property="og:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
-<meta property="og:updated_time" content="2017-09-02T05:40:13.593Z">
+<meta property="og:description" content="前言Elseticsearch分页查询和精确查询 for python 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#coding:utf-8from elasticsearch import Elasticsearches = Elasticsearch([&amp;#123;&apos;ho">
+<meta property="og:updated_time" content="2017-09-02T06:26:09.161Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go 搭建匿名检测api">
-<meta name="twitter:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
+<meta name="twitter:title" content="Elseticsearch分页查询和精确查询">
+<meta name="twitter:description" content="前言Elseticsearch分页查询和精确查询 for python 12345678910111213141516171819202122232425262728293031323334353637383940414243444546#coding:utf-8from elasticsearch import Elasticsearches = Elasticsearch([&amp;#123;&apos;ho">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -158,28 +158,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Go-搭建匿名检测api" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Elseticsearch分页查询和精确查询" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Go 搭建匿名检测api
+      Elseticsearch分页查询和精确查询
     </h1>
   
 
         
-        <a href="/2017/08/12/Go-搭建匿名检测api/" class="archive-article-date">
-  	<time datetime="2017-08-12T03:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-12</time>
+        <a href="/2017/08/02/Elseticsearch分页查询和精确查询/" class="archive-article-date">
+  	<time datetime="2017-08-02T11:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>使用go语言搭建匿名检测的api<br>程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"strings"</span></div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"encoding/json"</span></div><div class="line">)</div><div class="line">func Header(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    head := r.Header</div><div class="line">    headers, _ := json.Marshal(head)</div><div class="line">    w.Write(headers)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func Ip(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    a := r.RemoteAddr</div><div class="line">    ip := strings.Split(a,<span class="string">":"</span>)[0]</div><div class="line">    w.Write([]byte(ip))</div><div class="line">&#125;</div><div class="line"> </div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    http.HandleFunc(<span class="string">"/ip"</span>, Ip)</div><div class="line">    http.HandleFunc(<span class="string">"/header"</span>, Header)</div><div class="line">    http.ListenAndServe(<span class="string">":3000"</span>, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elseticsearch分页查询和精确查询 for python</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line">from elasticsearch import Elasticsearch</div><div class="line"></div><div class="line">es = Elasticsearch([&#123;<span class="string">'host'</span>:<span class="string">'192.168.3.22'</span>,<span class="string">'port'</span>:9200&#125;])</div><div class="line"></div><div class="line">def term(url):</div><div class="line">    <span class="keyword">if</span> <span class="string">'://'</span> <span class="keyword">in</span> url:</div><div class="line">        url = url.split(<span class="string">'://'</span>)[-1]</div><div class="line">    res = es.search(index=<span class="string">"dmoz"</span>, body=&#123;<span class="string">'query'</span>:&#123;<span class="string">'term'</span>:&#123;<span class="string">'url'</span>:url&#125;&#125;&#125;)</div><div class="line">    result = []</div><div class="line">    <span class="keyword">for</span> de <span class="keyword">in</span> res[<span class="string">'hits'</span>][<span class="string">'hits'</span>]:</div><div class="line">        result.append(de[<span class="string">'_source'</span>])</div><div class="line">    <span class="built_in">return</span> result</div><div class="line"></div><div class="line">def topic(topic):</div><div class="line">    page = es.search(</div><div class="line">            index =<span class="string">'dmoz'</span>,</div><div class="line">            doc_type =<span class="string">'dmoz'</span>,</div><div class="line">            scroll =<span class="string">'2m'</span>,</div><div class="line">            search_type =<span class="string">'scan'</span>,</div><div class="line">            size =1000,</div><div class="line">            body =&#123;</div><div class="line">            <span class="string">'query'</span>:&#123;<span class="string">'match_phrase'</span>:&#123;<span class="string">'topic'</span>:topic&#125;&#125;</div><div class="line">    &#125;)</div><div class="line">    sid = page[<span class="string">'_scroll_id'</span>]</div><div class="line">    scroll_size = page[<span class="string">'hits'</span>][<span class="string">'total'</span>]</div><div class="line"></div><div class="line">    q = []</div><div class="line">    <span class="keyword">while</span>(scroll_size &gt;0):</div><div class="line">            page = es.scroll(scroll_id = sid, scroll =<span class="string">'2m'</span>)</div><div class="line">            sid = page[<span class="string">'_scroll_id'</span>]</div><div class="line">            scroll_size = len(page[<span class="string">'hits'</span>][<span class="string">'hits'</span>])</div><div class="line">            <span class="comment">#print str(scroll_size)</span></div><div class="line">            qu = page[<span class="string">'hits'</span>][<span class="string">'hits'</span>]</div><div class="line">            q.append(qu)</div><div class="line">    result = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> q:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">            <span class="comment">#print j['_source']['topic']</span></div><div class="line">            result.append(j[<span class="string">'_source'</span>])</div><div class="line">    <span class="built_in">return</span> result</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    topic(<span class="string">'Top/Society/Philosophy/Philosophy_of_Science/Physics/Physics_in_Popular_Culture'</span>)</div><div class="line"></div><div class="line">    <span class="comment">#term('http://www.jd.com/')</span></div></pre></td></tr></table></figure>
       
 
       
@@ -223,11 +223,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -283,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/12/Go-搭建匿名检测api/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/02/Elseticsearch分页查询和精确查询/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,9 +297,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/08/10/phantomjs/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          phantomjs 抓取网页
+        
+      </div>
+    </a>
   
-    <a href="/2017/08/11/headless-chrome小试牛刀/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">headless chrome小试牛刀</div>
+  
+    <a href="/2017/08/02/Elasticsearch批量导入数据/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Elasticsearch批量导入数据</div>
       <i class="icon-circle-right"></i>
     </a>
   

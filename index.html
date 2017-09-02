@@ -395,6 +395,318 @@
 
 
   
+    <article id="post-Elseticsearch分页查询和精确查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/02/Elseticsearch分页查询和精确查询/">Elseticsearch分页查询和精确查询</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/02/Elseticsearch分页查询和精确查询/" class="archive-article-date">
+  	<time datetime="2017-08-02T11:55:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elseticsearch分页查询和精确查询 for python</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line">from elasticsearch import Elasticsearch</div><div class="line"></div><div class="line">es = Elasticsearch([&#123;<span class="string">'host'</span>:<span class="string">'192.168.3.22'</span>,<span class="string">'port'</span>:9200&#125;])</div><div class="line"></div><div class="line">def term(url):</div><div class="line">    <span class="keyword">if</span> <span class="string">'://'</span> <span class="keyword">in</span> url:</div><div class="line">        url = url.split(<span class="string">'://'</span>)[-1]</div><div class="line">    res = es.search(index=<span class="string">"dmoz"</span>, body=&#123;<span class="string">'query'</span>:&#123;<span class="string">'term'</span>:&#123;<span class="string">'url'</span>:url&#125;&#125;&#125;)</div><div class="line">    result = []</div><div class="line">    <span class="keyword">for</span> de <span class="keyword">in</span> res[<span class="string">'hits'</span>][<span class="string">'hits'</span>]:</div><div class="line">        result.append(de[<span class="string">'_source'</span>])</div><div class="line">    <span class="built_in">return</span> result</div><div class="line"></div><div class="line">def topic(topic):</div><div class="line">    page = es.search(</div><div class="line">            index =<span class="string">'dmoz'</span>,</div><div class="line">            doc_type =<span class="string">'dmoz'</span>,</div><div class="line">            scroll =<span class="string">'2m'</span>,</div><div class="line">            search_type =<span class="string">'scan'</span>,</div><div class="line">            size =1000,</div><div class="line">            body =&#123;</div><div class="line">            <span class="string">'query'</span>:&#123;<span class="string">'match_phrase'</span>:&#123;<span class="string">'topic'</span>:topic&#125;&#125;</div><div class="line">    &#125;)</div><div class="line">    sid = page[<span class="string">'_scroll_id'</span>]</div><div class="line">    scroll_size = page[<span class="string">'hits'</span>][<span class="string">'total'</span>]</div><div class="line"></div><div class="line">    q = []</div><div class="line">    <span class="keyword">while</span>(scroll_size &gt;0):</div><div class="line">            page = es.scroll(scroll_id = sid, scroll =<span class="string">'2m'</span>)</div><div class="line">            sid = page[<span class="string">'_scroll_id'</span>]</div><div class="line">            scroll_size = len(page[<span class="string">'hits'</span>][<span class="string">'hits'</span>])</div><div class="line">            <span class="comment">#print str(scroll_size)</span></div><div class="line">            qu = page[<span class="string">'hits'</span>][<span class="string">'hits'</span>]</div><div class="line">            q.append(qu)</div><div class="line">    result = []</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> q:</div><div class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> i:</div><div class="line">            <span class="comment">#print j['_source']['topic']</span></div><div class="line">            result.append(j[<span class="string">'_source'</span>])</div><div class="line">    <span class="built_in">return</span> result</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__==<span class="string">"__main__"</span>:</div><div class="line">    topic(<span class="string">'Top/Society/Philosophy/Philosophy_of_Science/Physics/Physics_in_Popular_Culture'</span>)</div><div class="line"></div><div class="line">    <span class="comment">#term('http://www.jd.com/')</span></div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/02/Elseticsearch分页查询和精确查询/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Elasticsearch批量导入数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/02/Elasticsearch批量导入数据/">Elasticsearch批量导入数据</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/02/Elasticsearch批量导入数据/" class="archive-article-date">
+  	<time datetime="2017-08-02T11:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，<br>批量导入快很多</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST localhost:9200/_bulk --data-binary @data.json</div><div class="line"></div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line"></div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966001"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/02/Elasticsearch批量导入数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python连接Elasticsearch超时问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/02/Python连接Elasticsearch超时问题/">Python连接Elasticsearch超时问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/02/Python连接Elasticsearch超时问题/" class="archive-article-date">
+  	<time datetime="2017-08-02T06:29:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elasticsearch查询的时候如果数据太大会出现超时错误，需要设置超时时间</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#coding:utf-8</span></div><div class="line">from elasticsearch import Elasticsearch</div><div class="line"></div><div class="line">es = Elasticsearch([&#123;<span class="string">'host'</span>:<span class="string">'192.168.1.22'</span>,<span class="string">'port'</span>:9200&#125;],)</div><div class="line">page = es.scroll(scroll_id = sid, scroll =<span class="string">'2m'</span>,request_timeout=60)<span class="comment">#设置超时时间</span></div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/02/Python连接Elasticsearch超时问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Elasticsearch集群搭建设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/01/Elasticsearch集群搭建设置/">Elasticsearch集群搭建设置</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/01/Elasticsearch集群搭建设置/" class="archive-article-date">
+  	<time datetime="2017-08-01T08:30:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elasticsearch安装就不用说了，很简单，以下是设置集群</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/bin/plugin install mobz/elasticsearch-head</div><div class="line"></div><div class="line"></div><div class="line">cluster.name: es-cluster</div><div class="line"><span class="comment">#指定了节点名称</span></div><div class="line">node.name: node-1</div><div class="line"><span class="comment">#指定了该节点可能成为 master 节点，还可以是数据节点</span></div><div class="line">node.master: <span class="literal">true</span></div><div class="line">node.data: <span class="literal">true</span></div><div class="line"><span class="comment">#指定节点IP地址</span></div><div class="line">network.host: 192.168.3.40</div><div class="line"><span class="comment">#指定http端口，你使用head、kopf等相关插件使用的端口</span></div><div class="line">http.port: 9200</div><div class="line"><span class="comment">#为节点之间的通信设置一个自定义端口(默认为9300)    </span></div><div class="line">transport.tcp.port: 9300</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#也是指定了集群名称</span></div><div class="line">cluster.name: es-cluster</div><div class="line"><span class="comment">#指定了节点名称</span></div><div class="line">node.name: node-2</div><div class="line"><span class="comment">#指定了该节点可能成为 master 节点，还可以是数据节点</span></div><div class="line">node.master: <span class="literal">true</span></div><div class="line">node.data: <span class="literal">true</span></div><div class="line"><span class="comment">#指定节点IP地址</span></div><div class="line">network.host: 192.168.3.22</div><div class="line"><span class="comment">#，指定http端口，你使用head、kopf等相关插件使用的端口</span></div><div class="line">http.port: 9201</div><div class="line"><span class="comment"># 为节点之间的通信设置一个自定义端口(默认为9300)    </span></div><div class="line">transport.tcp.port: 9301</div><div class="line"><span class="comment">#告诉该的节点，可能的master节点是什么。集群单播</span></div><div class="line">discovery.zen.ping.unicast.hosts: [<span class="string">"192.168.37.128:9300"</span>]</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Elasticsearch</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/01/Elasticsearch集群搭建设置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
 
 
@@ -488,6 +800,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Go</a>
               </li>
              
@@ -504,11 +820,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
+                <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
             
             <div class="clearfix"></div>
