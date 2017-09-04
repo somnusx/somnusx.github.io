@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Go 搭建匿名检测api | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
+  <meta name="description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Head">
 <meta name="keywords" content="笔记,Go">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go 搭建匿名检测api">
 <meta property="og:url" content="http://yoursite.com/2017/08/12/Go-搭建匿名检测api/index.html">
 <meta property="og:site_name" content="somnus">
-<meta property="og:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
-<meta property="og:updated_time" content="2017-09-02T05:40:13.593Z">
+<meta property="og:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Head">
+<meta property="og:updated_time" content="2017-09-02T12:40:37.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go 搭建匿名检测api">
-<meta name="twitter:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Hea">
+<meta name="twitter:description" content="1. 前言使用go语言搭建匿名检测的api程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求12345678910111213141516171819202122232425package mainimport (    &quot;strings&quot;    &quot;net/http&quot;    &quot;encoding/json&quot;)func Head">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -178,7 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>使用go语言搭建匿名检测的api<br>程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求头<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"strings"</span></div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"encoding/json"</span></div><div class="line">)</div><div class="line">func Header(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    head := r.Header</div><div class="line">    headers, _ := json.Marshal(head)</div><div class="line">    w.Write(headers)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func Ip(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    a := r.RemoteAddr</div><div class="line">    ip := strings.Split(a,<span class="string">":"</span>)[0]</div><div class="line">    w.Write([]byte(ip))</div><div class="line">&#125;</div><div class="line"> </div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    http.HandleFunc(<span class="string">"/ip"</span>, Ip)</div><div class="line">    http.HandleFunc(<span class="string">"/header"</span>, Header)</div><div class="line">    http.ListenAndServe(<span class="string">":3000"</span>, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h4 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h4><p>使用go语言搭建匿名检测的api<br>程序有两个接口localhost:3000/ip,和localhost:3000/headers，分别返回真实ip和程序请求<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">package main</div><div class="line"></div><div class="line">import (</div><div class="line">    <span class="string">"strings"</span></div><div class="line">    <span class="string">"net/http"</span></div><div class="line">    <span class="string">"encoding/json"</span></div><div class="line">)</div><div class="line">func Header(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    head := r.Header</div><div class="line">    headers, _ := json.Marshal(head)</div><div class="line">    w.Write(headers)</div><div class="line">&#125;</div><div class="line"></div><div class="line">func Ip(w http.ResponseWriter, r *http.Request) &#123;</div><div class="line">    a := r.RemoteAddr</div><div class="line">    ip := strings.Split(a,<span class="string">":"</span>)[0]</div><div class="line">    w.Write([]byte(ip))</div><div class="line">&#125;</div><div class="line"> </div><div class="line">func <span class="function"><span class="title">main</span></span>() &#123;</div><div class="line">    http.HandleFunc(<span class="string">"/ip"</span>, Ip)</div><div class="line">    http.HandleFunc(<span class="string">"/header"</span>, Header)</div><div class="line">    http.ListenAndServe(<span class="string">":3000"</span>, nil)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
 
@@ -423,19 +423,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,6 +444,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
               </li>
              
               <li class="article-tag-list-item">
