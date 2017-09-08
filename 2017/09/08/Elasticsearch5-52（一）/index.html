@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: nodejs | somnus</title>
+  <title>Elasticsearch5.52（一）安装 | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="somnus">
-<meta property="og:url" content="http://yoursite.com/tags/nodejs/index.html">
+  <meta name="description" content="安装Elasticsearch5.5.21.下载Elasticsearch5.5.2安装java812345sudo apt-get install python-software-propertiessudo add-apt-repository ppa:webupd8team/javasudo apt-get updatesudo apt-get install oracle-java8-in">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch5.52（一）安装">
+<meta property="og:url" content="http://yoursite.com/2017/09/08/Elasticsearch5-52（一）/index.html">
 <meta property="og:site_name" content="somnus">
+<meta property="og:description" content="安装Elasticsearch5.5.21.下载Elasticsearch5.5.2安装java812345sudo apt-get install python-software-propertiessudo add-apt-repository ppa:webupd8team/javasudo apt-get updatesudo apt-get install oracle-java8-in">
+<meta property="og:updated_time" content="2017-09-08T13:48:54.179Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="somnus">
+<meta name="twitter:title" content="Elasticsearch5.52（一）安装">
+<meta name="twitter:description" content="安装Elasticsearch5.5.21.下载Elasticsearch5.5.2安装java812345sudo apt-get install python-software-propertiessudo add-apt-repository ppa:webupd8team/javasudo apt-get updatesudo apt-get install oracle-java8-in">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -153,68 +157,174 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Elasticsearch5-52（一）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/11/headless-chrome小试牛刀/" class="archive-article-date">
-  	<time datetime="2017-08-11T05:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/11/headless-chrome小试牛刀/">headless chrome小试牛刀</a>
+    <h1 class="article-title" itemprop="name">
+      Elasticsearch5.52（一）安装
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">headless chrome</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">nodejs</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2017/09/08/Elasticsearch5-52（一）/" class="archive-article-date">
+  	<time datetime="2017-09-08T11:36:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装Elasticsearch5-5-2"><a href="#安装Elasticsearch5-5-2" class="headerlink" title="安装Elasticsearch5.5.2"></a>安装Elasticsearch5.5.2</h4><h5 id="1-下载Elasticsearch5-5-2"><a href="#1-下载Elasticsearch5-5-2" class="headerlink" title="1.下载Elasticsearch5.5.2"></a>1.下载Elasticsearch5.5.2</h5><p>安装java8<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-software-properties</div><div class="line">sudo add-apt-repository ppa:webupd8team/java</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install oracle-java8-installer</div><div class="line">一路点击ok</div></pre></td></tr></table></figure></p>
+<p>下载Elasticsearch</p>
+<p>wget <a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.tar.gz" target="_blank" rel="external">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.tar.gz</a></p>
+<p>注意不要用超级权限下载和解压Elasticsearch！！！运行也不要！！！</p>
+<p>解压<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar zxvf elasticsearch-5.5.2.tar.gz</div><div class="line"><span class="built_in">cd</span> elasticsearch</div><div class="line">运行</div><div class="line">bin/elasticsearch</div></pre></td></tr></table></figure></p>
+<p>配置外网访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> config</div><div class="line">nano elasticsearch.yml</div><div class="line">network.host: 192.168.2.116 这个ip是安装Elasticsearch服务器的ip</div><div class="line">访问 http://192.168.2.116:9200/</div></pre></td></tr></table></figure></p>
+<h5 id="2-安装elasticsaerch-head"><a href="#2-安装elasticsaerch-head" class="headerlink" title="2.安装elasticsaerch-head"></a>2.安装elasticsaerch-head</h5><p>安装这个有点麻烦</p>
+<p>1.安装node<br>使用nvm安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ sudo -i</div><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash</div><div class="line">$ . ~/.bashrc</div><div class="line">$ nvm install v8.3.0</div><div class="line">$ node -v</div><div class="line">新建一个文件夹不要在Elasticsearch文件夹内安装elasticsearch-head</div><div class="line">$ git <span class="built_in">clone</span> git://github.com/mobz/elasticsearch-head.git</div><div class="line">$ <span class="built_in">cd</span> elasticsearch-head</div><div class="line">$ npm install g</div><div class="line">修改ip elasticsearch-head/Gruntfile.js 4430行</div><div class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://192.168.2.116:9200"</span>;</div><div class="line">$ nano config/elasticsearch.yml </div><div class="line">在后边加上这两行</div><div class="line">http.cors.enabled: <span class="literal">true</span></div><div class="line">http.cors.allow-origin: <span class="string">"*"</span></div><div class="line"></div><div class="line">$ npm run start</div><div class="line">访问 http://192.168.2.166:9100</div></pre></td></tr></table></figure></p>
+<h5 id="3-安装Kibana"><a href="#3-安装Kibana" class="headerlink" title="3.安装Kibana"></a>3.安装Kibana</h5><p>wget <a href="https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-linux-x86_64.tar.gz" target="_blank" rel="external">https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-linux-x86_64.tar.gz</a></p>
+<p>解压<br>修改外网访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ nano config/kibana.yml </div><div class="line">elasticsearch.url: <span class="string">"http://192.168.2.116:9200"</span></div><div class="line">server.host: <span class="string">"192.168.2.116"</span></div><div class="line">安装x-pack</div><div class="line">$ bin/kibana-plugin install file:///root/x-pack-5.5.2.zip</div><div class="line">$ bin/kibana</div><div class="line">访问 http://192.168.2.116:5601</div><div class="line">账号: elastic</div><div class="line">密码: changeme</div></pre></td></tr></table></figure></p>
+<h5 id="4-安装x-pack"><a href="#4-安装x-pack" class="headerlink" title="4.安装x-pack"></a>4.安装x-pack</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">一路选Y</div><div class="line">bin/elasticsearch-plugin install x-pack</div><div class="line">离线安装</div><div class="line">bin/elasticsearch-plugin install file:///root/x-pack-5.5.2.zip</div></pre></td></tr></table></figure>
 
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/08/Elasticsearch5-52（一）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/08/12/Go-搭建匿名检测api/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go 搭建匿名检测api</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -237,9 +347,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

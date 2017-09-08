@@ -155,6 +155,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Elasticsearch5-52（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/08/Elasticsearch5-52（一）/">Elasticsearch5.52（一）安装</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/08/Elasticsearch5-52（一）/" class="archive-article-date">
+  	<time datetime="2017-09-08T11:36:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装Elasticsearch5-5-2"><a href="#安装Elasticsearch5-5-2" class="headerlink" title="安装Elasticsearch5.5.2"></a>安装Elasticsearch5.5.2</h4><h5 id="1-下载Elasticsearch5-5-2"><a href="#1-下载Elasticsearch5-5-2" class="headerlink" title="1.下载Elasticsearch5.5.2"></a>1.下载Elasticsearch5.5.2</h5><p>安装java8<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install python-software-properties</div><div class="line">sudo add-apt-repository ppa:webupd8team/java</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install oracle-java8-installer</div><div class="line">一路点击ok</div></pre></td></tr></table></figure></p>
+<p>下载Elasticsearch</p>
+<p>wget <a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.tar.gz" target="_blank" rel="external">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.tar.gz</a></p>
+<p>注意不要用超级权限下载和解压Elasticsearch！！！运行也不要！！！</p>
+<p>解压<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">tar zxvf elasticsearch-5.5.2.tar.gz</div><div class="line"><span class="built_in">cd</span> elasticsearch</div><div class="line">运行</div><div class="line">bin/elasticsearch</div></pre></td></tr></table></figure></p>
+<p>配置外网访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> config</div><div class="line">nano elasticsearch.yml</div><div class="line">network.host: 192.168.2.116 这个ip是安装Elasticsearch服务器的ip</div><div class="line">访问 http://192.168.2.116:9200/</div></pre></td></tr></table></figure></p>
+<h5 id="2-安装elasticsaerch-head"><a href="#2-安装elasticsaerch-head" class="headerlink" title="2.安装elasticsaerch-head"></a>2.安装elasticsaerch-head</h5><p>安装这个有点麻烦</p>
+<p>1.安装node<br>使用nvm安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">$ sudo -i</div><div class="line">$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash</div><div class="line">$ . ~/.bashrc</div><div class="line">$ nvm install v8.3.0</div><div class="line">$ node -v</div><div class="line">新建一个文件夹不要在Elasticsearch文件夹内安装elasticsearch-head</div><div class="line">$ git <span class="built_in">clone</span> git://github.com/mobz/elasticsearch-head.git</div><div class="line">$ <span class="built_in">cd</span> elasticsearch-head</div><div class="line">$ npm install g</div><div class="line">修改ip elasticsearch-head/Gruntfile.js 4430行</div><div class="line">this.base_uri = this.config.base_uri || this.prefs.get(<span class="string">"app-base_uri"</span>) || <span class="string">"http://192.168.2.116:9200"</span>;</div><div class="line">$ nano config/elasticsearch.yml </div><div class="line">在后边加上这两行</div><div class="line">http.cors.enabled: <span class="literal">true</span></div><div class="line">http.cors.allow-origin: <span class="string">"*"</span></div><div class="line"></div><div class="line">$ npm run start</div><div class="line">访问 http://192.168.2.166:9100</div></pre></td></tr></table></figure></p>
+<h5 id="3-安装Kibana"><a href="#3-安装Kibana" class="headerlink" title="3.安装Kibana"></a>3.安装Kibana</h5><p>wget <a href="https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-linux-x86_64.tar.gz" target="_blank" rel="external">https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-linux-x86_64.tar.gz</a></p>
+<p>解压<br>修改外网访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ nano config/kibana.yml </div><div class="line">elasticsearch.url: <span class="string">"http://192.168.2.116:9200"</span></div><div class="line">server.host: <span class="string">"192.168.2.116"</span></div><div class="line">安装x-pack</div><div class="line">$ bin/kibana-plugin install file:///root/x-pack-5.5.2.zip</div><div class="line">$ bin/kibana</div><div class="line">访问 http://192.168.2.116:5601</div><div class="line">账号: elastic</div><div class="line">密码: changeme</div></pre></td></tr></table></figure></p>
+<h5 id="4-安装x-pack"><a href="#4-安装x-pack" class="headerlink" title="4.安装x-pack"></a>4.安装x-pack</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">一路选Y</div><div class="line">bin/elasticsearch-plugin install x-pack</div><div class="line">离线安装</div><div class="line">bin/elasticsearch-plugin install file:///root/x-pack-5.5.2.zip</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/08/Elasticsearch5-52（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Go-搭建匿名检测api" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -189,11 +262,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Go</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
@@ -494,7 +567,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，<br>批量导入快很多</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST localhost:9200/_bulk --data-binary @data.json</div><div class="line"></div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line"></div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966001"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">dict = &#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>&#125;</div><div class="line">st = json.dumps(dict)</div><div class="line">with open(<span class="string">'data.json'</span>,<span class="string">'a'</span>) as cod:</div><div class="line">	cod.write(str(st))</div><div class="line"></div><div class="line">curl -XPOST localhost:9200/_bulk --data-binary @data.json</div><div class="line"></div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line">不加id</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -589,11 +662,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -640,7 +713,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/01/Elasticsearch集群搭建设置/">Elasticsearch集群搭建设置</a>
+      <a class="article-title" href="/2017/08/01/Elasticsearch集群搭建设置/">Elasticsearch2.4集群搭建设置</a>
     </h1>
   
 
@@ -653,7 +726,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elasticsearch安装就不用说了，很简单，以下是设置集群</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elasticsearch2.4安装就不用说了，很简单，以下是设置集群</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/bin/plugin install mobz/elasticsearch-head</div><div class="line"></div><div class="line"></div><div class="line">cluster.name: es-cluster</div><div class="line"><span class="comment">#指定了节点名称</span></div><div class="line">node.name: node-1</div><div class="line"><span class="comment">#指定了该节点可能成为 master 节点，还可以是数据节点</span></div><div class="line">node.master: <span class="literal">true</span></div><div class="line">node.data: <span class="literal">true</span></div><div class="line"><span class="comment">#指定节点IP地址</span></div><div class="line">network.host: 192.168.3.40</div><div class="line"><span class="comment">#指定http端口，你使用head、kopf等相关插件使用的端口</span></div><div class="line">http.port: 9200</div><div class="line"><span class="comment">#为节点之间的通信设置一个自定义端口(默认为9300)    </span></div><div class="line">transport.tcp.port: 9300</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#也是指定了集群名称</span></div><div class="line">cluster.name: es-cluster</div><div class="line"><span class="comment">#指定了节点名称</span></div><div class="line">node.name: node-2</div><div class="line"><span class="comment">#指定了该节点可能成为 master 节点，还可以是数据节点</span></div><div class="line">node.master: <span class="literal">true</span></div><div class="line">node.data: <span class="literal">true</span></div><div class="line"><span class="comment">#指定节点IP地址</span></div><div class="line">network.host: 192.168.3.22</div><div class="line"><span class="comment">#，指定http端口，你使用head、kopf等相关插件使用的端口</span></div><div class="line">http.port: 9201</div><div class="line"><span class="comment"># 为节点之间的通信设置一个自定义端口(默认为9300)    </span></div><div class="line">transport.tcp.port: 9301</div><div class="line"><span class="comment">#告诉该的节点，可能的master节点是什么。集群单播</span></div><div class="line">discovery.zen.ping.unicast.hosts: [<span class="string">"192.168.37.128:9300"</span>]</div></pre></td></tr></table></figure>
       
 
@@ -800,11 +873,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">Go</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -812,7 +889,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Go</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -821,14 +902,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
             
             <div class="clearfix"></div>

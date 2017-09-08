@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Elasticsearch集群搭建设置 | somnus</title>
+  <title>Elasticsearch2.4集群搭建设置 | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言Elasticsearch安装就不用说了，很简单，以下是设置集群 1234567891011121314151617181920212223242526272829303132/bin/plugin install mobz/elasticsearch-headcluster.name: es-cluster#指定了节点名称node.name: node-1#指定了该节点可能成为 master">
+  <meta name="description" content="前言Elasticsearch2.4安装就不用说了，很简单，以下是设置集群 1234567891011121314151617181920212223242526272829303132/bin/plugin install mobz/elasticsearch-headcluster.name: es-cluster#指定了节点名称node.name: node-1#指定了该节点可能成为 mas">
 <meta name="keywords" content="Elasticsearch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Elasticsearch集群搭建设置">
+<meta property="og:title" content="Elasticsearch2.4集群搭建设置">
 <meta property="og:url" content="http://yoursite.com/2017/08/01/Elasticsearch集群搭建设置/index.html">
 <meta property="og:site_name" content="somnus">
-<meta property="og:description" content="前言Elasticsearch安装就不用说了，很简单，以下是设置集群 1234567891011121314151617181920212223242526272829303132/bin/plugin install mobz/elasticsearch-headcluster.name: es-cluster#指定了节点名称node.name: node-1#指定了该节点可能成为 master">
-<meta property="og:updated_time" content="2017-09-02T06:40:11.359Z">
+<meta property="og:description" content="前言Elasticsearch2.4安装就不用说了，很简单，以下是设置集群 1234567891011121314151617181920212223242526272829303132/bin/plugin install mobz/elasticsearch-headcluster.name: es-cluster#指定了节点名称node.name: node-1#指定了该节点可能成为 mas">
+<meta property="og:updated_time" content="2017-09-08T11:35:30.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elasticsearch集群搭建设置">
-<meta name="twitter:description" content="前言Elasticsearch安装就不用说了，很简单，以下是设置集群 1234567891011121314151617181920212223242526272829303132/bin/plugin install mobz/elasticsearch-headcluster.name: es-cluster#指定了节点名称node.name: node-1#指定了该节点可能成为 master">
+<meta name="twitter:title" content="Elasticsearch2.4集群搭建设置">
+<meta name="twitter:description" content="前言Elasticsearch2.4安装就不用说了，很简单，以下是设置集群 1234567891011121314151617181920212223242526272829303132/bin/plugin install mobz/elasticsearch-headcluster.name: es-cluster#指定了节点名称node.name: node-1#指定了该节点可能成为 mas">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -165,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Elasticsearch集群搭建设置
+      Elasticsearch2.4集群搭建设置
     </h1>
   
 
@@ -178,7 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elasticsearch安装就不用说了，很简单，以下是设置集群</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>Elasticsearch2.4安装就不用说了，很简单，以下是设置集群</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">/bin/plugin install mobz/elasticsearch-head</div><div class="line"></div><div class="line"></div><div class="line">cluster.name: es-cluster</div><div class="line"><span class="comment">#指定了节点名称</span></div><div class="line">node.name: node-1</div><div class="line"><span class="comment">#指定了该节点可能成为 master 节点，还可以是数据节点</span></div><div class="line">node.master: <span class="literal">true</span></div><div class="line">node.data: <span class="literal">true</span></div><div class="line"><span class="comment">#指定节点IP地址</span></div><div class="line">network.host: 192.168.3.40</div><div class="line"><span class="comment">#指定http端口，你使用head、kopf等相关插件使用的端口</span></div><div class="line">http.port: 9200</div><div class="line"><span class="comment">#为节点之间的通信设置一个自定义端口(默认为9300)    </span></div><div class="line">transport.tcp.port: 9300</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#也是指定了集群名称</span></div><div class="line">cluster.name: es-cluster</div><div class="line"><span class="comment">#指定了节点名称</span></div><div class="line">node.name: node-2</div><div class="line"><span class="comment">#指定了该节点可能成为 master 节点，还可以是数据节点</span></div><div class="line">node.master: <span class="literal">true</span></div><div class="line">node.data: <span class="literal">true</span></div><div class="line"><span class="comment">#指定节点IP地址</span></div><div class="line">network.host: 192.168.3.22</div><div class="line"><span class="comment">#，指定http端口，你使用head、kopf等相关插件使用的端口</span></div><div class="line">http.port: 9201</div><div class="line"><span class="comment"># 为节点之间的通信设置一个自定义端口(默认为9300)    </span></div><div class="line">transport.tcp.port: 9301</div><div class="line"><span class="comment">#告诉该的节点，可能的master节点是什么。集群单播</span></div><div class="line">discovery.zen.ping.unicast.hosts: [<span class="string">"192.168.37.128:9300"</span>]</div></pre></td></tr></table></figure>
       
 
@@ -423,11 +423,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">Go</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -435,7 +439,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Go</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -444,14 +452,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
             
             <div class="clearfix"></div>

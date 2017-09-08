@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Elasticsearch批量导入数据 | somnus</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，批量导入快很多 12345678curl -XPOST localhost:9200/_bulk --data-binary @data.json格式如下&amp;#123; &quot;index&quot; : &amp;#123; &quot;_index&quot; : &quot;yu&quot;, &quot;_type&quot; : &quot;yu&quot;, &quot;_id&quot; : &quot;966000&quot; &amp;#125;&amp;#1">
+  <meta name="description" content="前言用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，批量导入快很多 1234567891011121314import jsondict = &amp;#123;&quot;ip&quot;:&quot;0.0.0.0&quot;,&quot;ipint&quot;:0,&quot;domain&quot;:&quot;vnngon.com&quot;&amp;#125;st = json.dumps(dict)with open(&apos;data.json&apos;,&apos;a&apos;) as cod:	c">
 <meta name="keywords" content="Elasticsearch,笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch批量导入数据">
 <meta property="og:url" content="http://yoursite.com/2017/08/02/Elasticsearch批量导入数据/index.html">
 <meta property="og:site_name" content="somnus">
-<meta property="og:description" content="前言用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，批量导入快很多 12345678curl -XPOST localhost:9200/_bulk --data-binary @data.json格式如下&amp;#123; &quot;index&quot; : &amp;#123; &quot;_index&quot; : &quot;yu&quot;, &quot;_type&quot; : &quot;yu&quot;, &quot;_id&quot; : &quot;966000&quot; &amp;#125;&amp;#1">
-<meta property="og:updated_time" content="2017-09-02T06:34:08.974Z">
+<meta property="og:description" content="前言用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，批量导入快很多 1234567891011121314import jsondict = &amp;#123;&quot;ip&quot;:&quot;0.0.0.0&quot;,&quot;ipint&quot;:0,&quot;domain&quot;:&quot;vnngon.com&quot;&amp;#125;st = json.dumps(dict)with open(&apos;data.json&apos;,&apos;a&apos;) as cod:	c">
+<meta property="og:updated_time" content="2017-09-08T11:34:25.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Elasticsearch批量导入数据">
-<meta name="twitter:description" content="前言用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，批量导入快很多 12345678curl -XPOST localhost:9200/_bulk --data-binary @data.json格式如下&amp;#123; &quot;index&quot; : &amp;#123; &quot;_index&quot; : &quot;yu&quot;, &quot;_type&quot; : &quot;yu&quot;, &quot;_id&quot; : &quot;966000&quot; &amp;#125;&amp;#1">
+<meta name="twitter:description" content="前言用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，批量导入快很多 1234567891011121314import jsondict = &amp;#123;&quot;ip&quot;:&quot;0.0.0.0&quot;,&quot;ipint&quot;:0,&quot;domain&quot;:&quot;vnngon.com&quot;&amp;#125;st = json.dumps(dict)with open(&apos;data.json&apos;,&apos;a&apos;) as cod:	c">
   
     <link rel="alternative" href="/atom.xml" title="somnus" type="application/atom+xml">
   
@@ -179,7 +179,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，<br>批量导入快很多</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">curl -XPOST localhost:9200/_bulk --data-binary @data.json</div><div class="line"></div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line"></div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966001"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">dict = &#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>&#125;</div><div class="line">st = json.dumps(dict)</div><div class="line">with open(<span class="string">'data.json'</span>,<span class="string">'a'</span>) as cod:</div><div class="line">	cod.write(str(st))</div><div class="line"></div><div class="line">curl -XPOST localhost:9200/_bulk --data-binary @data.json</div><div class="line"></div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line">不加id</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -432,11 +432,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Elasticsearch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">Go</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -444,7 +448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Go</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -453,14 +461,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">nodejs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Hello World</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">phantomjs</a>
               </li>
             
             <div class="clearfix"></div>
