@@ -187,7 +187,8 @@
 <p>wget <a href="https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-linux-x86_64.tar.gz" target="_blank" rel="external">https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-linux-x86_64.tar.gz</a></p>
 <p>解压<br>修改外网访问<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ nano config/kibana.yml </div><div class="line">elasticsearch.url: <span class="string">"http://192.168.2.116:9200"</span></div><div class="line">server.host: <span class="string">"192.168.2.116"</span></div><div class="line">安装x-pack</div><div class="line">$ bin/kibana-plugin install file:///root/x-pack-5.5.2.zip</div><div class="line">$ bin/kibana</div><div class="line">访问 http://192.168.2.116:5601</div><div class="line">账号: elastic</div><div class="line">密码: changeme</div></pre></td></tr></table></figure></p>
 <h5 id="4-安装x-pack"><a href="#4-安装x-pack" class="headerlink" title="4.安装x-pack"></a>4.安装x-pack</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">一路选Y</div><div class="line">bin/elasticsearch-plugin install x-pack</div><div class="line">离线安装</div><div class="line">bin/elasticsearch-plugin install file:///root/x-pack-5.5.2.zip</div></pre></td></tr></table></figure>
-<h5 id="5-问题"><a href="#5-问题" class="headerlink" title="5.问题"></a>5.问题</h5><p>1.max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nano /etc/sysctl.conf </div><div class="line">vm.max_map_count=655360</div><div class="line">$ sysctl -p</div></pre></td></tr></table></figure></p>
+<h5 id="5-安装ik分词器"><a href="#5-安装ik分词器" class="headerlink" title="5.安装ik分词器"></a>5.安装ik分词器</h5><p><a href="https://github.com/medcl/elasticsearch-analysis-ik" target="_blank" rel="external">https://github.com/medcl/elasticsearch-analysis-ik</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bin/elasticsearch-plugin install file:///home/somnus/Desktop/elasticsearch-analysis-ik-5.5.2.zip</div></pre></td></tr></table></figure></p>
+<h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>1.max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ nano /etc/sysctl.conf </div><div class="line">vm.max_map_count=655360</div><div class="line">$ sysctl -p</div></pre></td></tr></table></figure></p>
 <p>2.elasticsearch-head 无法连接Elasticsearch，因为安装了x-pack 所以加密了<br>目前找到的只能先关上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ nano config/elasticsearch.yml</div><div class="line">xpack.security.enabled: <span class="literal">false</span></div></pre></td></tr></table></figure>
       
@@ -665,11 +666,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		
 		</ul>
@@ -884,11 +885,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
