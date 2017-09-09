@@ -571,7 +571,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>用Python的模块导入数据太特么慢了，这几百个G的数据牛年马月也导入不完，<br>批量导入快很多</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">dict = &#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>&#125;</div><div class="line">st = json.dumps(dict)</div><div class="line">with open(<span class="string">'data.json'</span>,<span class="string">'a'</span>) as cod:</div><div class="line">	cod.write(str(st))</div><div class="line"></div><div class="line">curl -XPOST localhost:9200/_bulk --data-binary @data.json</div><div class="line">elasticsearch5.5.2加上密码</div><div class="line">curl --user elastic:changeme -XPOST 192.168.2.116:9200/_bulk --data-binary @data1.json</div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line">不加id</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">import json</div><div class="line">dict = &#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>&#125;</div><div class="line">st = json.dumps(dict)</div><div class="line">with open(<span class="string">'data.json'</span>,<span class="string">'a'</span>) as cod:</div><div class="line">	cod.write(str(st))</div><div class="line"></div><div class="line">curl -XPOST localhost:9200/njust/njust/_bulk --data-binary @data.json</div><div class="line">elasticsearch5.5.2加上密码</div><div class="line">curl --user elastic:changeme -XPOST 192.168.2.116:9200/_bulk --data-binary @data1.json</div><div class="line">格式如下</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span>, <span class="string">"_id"</span> : <span class="string">"966000"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnngon.com"</span>,<span class="string">"alexa_rank"</span>:885736&#125;</div><div class="line">不加id</div><div class="line">&#123; <span class="string">"index"</span> : &#123; <span class="string">"_index"</span> : <span class="string">"yu"</span>, <span class="string">"_type"</span> : <span class="string">"yu"</span> &#125;&#125;</div><div class="line">&#123;<span class="string">"ip"</span>:<span class="string">"0.0.0.0"</span>,<span class="string">"ipint"</span>:0,<span class="string">"domain"</span>:<span class="string">"vnn.com"</span>,<span class="string">"alexa_rank"</span>:885737&#125;</div></pre></td></tr></table></figure>
       
 
       
@@ -666,11 +666,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -885,11 +885,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
